@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="404.0" prefWidth="325.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculadora.Controlador">
+   <children>
+      <TextField fx:id="textField" editable="false" layoutX="25.0" layoutY="28.0" prefHeight="38.0" prefWidth="278.0" />
+
+      <GridPane layoutX="14.0" layoutY="84.0" prefHeight="305.0" prefWidth="300.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin></Button>
+            <Button alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="=" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin></Button>
+            <Button fx:id="Uno" alignment="CENTER" contentDisplay="BOTTOM" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="1" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Button>
+            <Button alignment="CENTER" contentDisplay="BOTTOM" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Button>
+            <Button alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="+" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Button>
+            <Button alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Button>
+            <Button alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin></Button>
+            <Button alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="7" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="/" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="BOTTOM" layoutX="20.0" layoutY="28.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="4" GridPane.rowIndex="2">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="." GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="25.0" prefWidth="57.0" text="x" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="BorrarTodo" alignment="CENTER" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="39.0" prefWidth="134.0" style="-fx-background-color: pink;" text="AC">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="Borrar" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="41.0" prefWidth="128.0" style="-fx-background-color: pink;" text="&lt;-" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="Borrar1" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="20.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="44.0" prefWidth="44.0" text="(" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="Borrar11" alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="20.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="44.0" prefWidth="44.0" text=")" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+         </children>
+      </GridPane>
+   </children>
+</AnchorPane>
