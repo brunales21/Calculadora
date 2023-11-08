@@ -6,8 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-import java.util.EmptyStackException;
-
 public class Controlador {
 
 
@@ -69,10 +67,10 @@ public class Controlador {
         return String.valueOf(valor.charAt(valor.length()-1));
     }
 
-    public int ocurrenciasDe(String c) {
+    public int ocurrenciasDe(String exp, String c) {
         int contador = 0;
-        for (int i = 0; i < textField.getText().length(); i++) {
-            String elemento = String.valueOf(textField.getText().charAt(i));
+        for (int i = 0; i < exp.length(); i++) {
+            String elemento = String.valueOf(exp.charAt(i));
             if (elemento.equals(c)) {
                 contador++;
             }
@@ -83,7 +81,6 @@ public class Controlador {
 
 
     public void insertToTextField(String input) {
-
         if (isOperador(input) && isOperador(getLastPos(textField.getText()))) {
             textField.setText(textField.getText().substring(0, textField.getText().length()-1).concat(input));
             return;
@@ -92,9 +89,9 @@ public class Controlador {
         textField.appendText(input);
         Button cierraParentesisBtn = (Button) this.cierraParentesis.getScene().lookup("#cierraParentesis");
 
-        if (input.equals(")") && ocurrenciasDe(")") == ocurrenciasDe("(")) {
+        if (input.equals(")") && ocurrenciasDe(textField.getText(), ")") == ocurrenciasDe(textField.getText(), "(")) {
             disableButton(cierraParentesisBtn);
-        } else if (input.equals("(") && ocurrenciasDe("(") > ocurrenciasDe(")")) {
+        } else if (input.equals("(") && ocurrenciasDe(textField.getText(), "(") > ocurrenciasDe(textField.getText(), ")")) {
             enableButton(cierraParentesisBtn);
         }
 
@@ -111,7 +108,6 @@ public class Controlador {
     public void resolver(String expresion) {
         String m;
         try {
-
             String resultado = modelo.calcular(expresion);
             System.out.println(resultado);
             String decimalPart = resultado.substring(resultado.indexOf(".")+1);
@@ -129,14 +125,16 @@ public class Controlador {
     }
 
     public int getCantParentesisRestantes(String expresion) {
-        return ocurrenciasDe("(") - ocurrenciasDe(")");
+        return ocurrenciasDe(expresion, "(") - ocurrenciasDe(expresion, ")");
     }
 
     public String fillWithParentesis(String expresion) {
+        if (expresion.endsWith("(")) {
+            expresion = expresion.substring(0, expresion.length() - 1);
+        }
         for (int i = 0; i < getCantParentesisRestantes(expresion); i++) {
             expresion = expresion.concat(")");
         }
-        System.out.println(expresion);
         return expresion;
     }
     public void instanceVentanaError(String mensaje) {
