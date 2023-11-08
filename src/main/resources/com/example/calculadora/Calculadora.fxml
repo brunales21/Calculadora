@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="404.0" prefWidth="325.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculadora.Controlador">
+<AnchorPane prefHeight="404.0" prefWidth="325.0" style="-fx-background-color: beige;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.calculadora.Controlador">
    <children>
       <TextField fx:id="textField" editable="false" layoutX="25.0" layoutY="28.0" prefHeight="38.0" prefWidth="278.0" />
 
@@ -110,8 +110,8 @@
                   <Insets left="10.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="Borrar1" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="20.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="44.0" prefWidth="44.0" text="(" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-            <Button fx:id="Borrar11" alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="20.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="44.0" prefWidth="44.0" text=")" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="abreParentesis" alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="20.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="44.0" prefWidth="44.0" text="(" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Button fx:id="cierraParentesis" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="160.0" layoutY="20.0" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onAction" prefHeight="44.0" prefWidth="44.0" text=")" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </children>
