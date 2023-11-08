@@ -22,62 +22,62 @@ public class Controlador {
     public void onAction(MouseEvent mouseEvent) {
         Button btn = ((Button) mouseEvent.getSource());
         String btnText = btn.getText();
-        if (isNum(btn.getText())) {
+
+        if (isPartOfExpression(btn.getText())) {
             insertToTextField(btnText);
-        } else if (btnText.equals("=")) {
+        } else if (presionoResolver(btnText)) {
             resolver(textField.getText());
-        } else if (btnText.equals("AC")) {
+        } else if (presionoLimpiar(btnText)) {
             vaciar();
         } else {
+            //borrar ultima posicion
             if (!textField.getText().isEmpty()) {
+                //entra solo si hay algo que borrar
                 borrarUltimo();
             }
         }
     }
 
-    public boolean isNum(String valor) {
+    public boolean presionoResolver(String btnText) {
+        return btnText.equals("=");
+    }
+
+    public boolean presionoLimpiar(String btnText) {
+        return btnText.equals("AC");
+    }
+
+    public boolean isPartOfExpression(String valor) {
         return "0123456789x-+/.()".contains(valor);
     }
 
-    public void insertToTextField(String valor) {
+    public boolean isOperador(String valor) {
+        return "+-/.x".contains(valor);
+    }
+    public String getLastPos(String valor) {
+        return String.valueOf(valor.charAt(valor.length()-1));
+    }
 
-        textField.appendText(valor);
+    public void insertToTextField(String input) {
+        if (isOperador(input) && isOperador(getLastPos(textField.getText()))) {
+            textField.setText(textField.getText().substring(0, textField.getText().length()-1).concat(input));
+            return;
+        }
+        textField.appendText(input);
     }
 
 
-    public void resolver(String expresion) {
 
+    public void resolver(String expresion) {
         String m;
         try {
             textField.setText(modelo.calcular(expresion));
             return;
-        } catch (NumberFormatException e) {
-            m = "No se puede introducir dos puntos seguidos";
-        } catch (IllegalArgumentException e) {
-            if (!isValidExpression(expresion)) {
-                m = "No se puede introducir dos simbolos incompatibles seguidos.";
-            } else {
-                m = "Numero invalido de operandos";
-            }
         } catch (ArithmeticException e) {
             m = "No se puede dividir entre 0, es infinito.";
-        } catch (EmptyStackException e) {
+        } catch (EmptyStackException | IllegalArgumentException e) {
             m = "Faltan o sobran parentesis";
         }
         instanceVentanaError(m);
-
-
-/*
-        String m;
-        try {
-            textField.setText(modelo.calcular(expresion));
-            return;
-        } catch (Exception e) {
-            m = e.getClass().getName() + " " + e.getMessage();
-        }
-        instanceVentanaError(m);
-
- */
     }
 
     public void instanceVentanaError(String mensaje) {
