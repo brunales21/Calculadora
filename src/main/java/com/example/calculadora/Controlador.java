@@ -128,13 +128,22 @@ public class Controlador {
         return ocurrenciasDe(expresion, "(") - ocurrenciasDe(expresion, ")");
     }
 
+    public boolean endsWith(String expression) {
+        return "(/-+x.".indexOf(expression.charAt(expression.length()-1)) != -1;
+    }
     public String fillWithParentesis(String expresion) {
-        if (expresion.endsWith("(")) {
-            expresion = expresion.substring(0, expresion.length() - 1);
+
+        if (endsWith(expresion)) {
+            //expresion = expresion.substring(0, expresion.length() - 1);
+            System.out.println("klkk");
+            expresion = expresion.concat("0");
         }
-        for (int i = 0; i < getCantParentesisRestantes(expresion); i++) {
+
+
+        for (int i = 0; i < getCantParentesisRestantes(expresion)+1; i++) {
             expresion = expresion.concat(")");
         }
+        System.out.println(expresion);
         return expresion;
     }
     public void instanceVentanaError(String mensaje) {
