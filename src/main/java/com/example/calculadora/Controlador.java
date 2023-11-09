@@ -9,10 +9,11 @@ import javafx.scene.input.MouseEvent;
 public class Controlador {
 
 
-    @FXML private TextField textField;
+    @FXML
+    private TextField textField;
     private CalculadoraModelo modelo;
-    @FXML private Button cierraParentesis;
-
+    @FXML
+    private Button cierraParentesis;
 
 
     public Controlador() {
@@ -23,7 +24,6 @@ public class Controlador {
     public void onAction(MouseEvent mouseEvent) {
         Button btn = ((Button) mouseEvent.getSource());
         String btnText = btn.getText();
-
 
         if (isPartOfExpression(btn.getText())) {
             insertToTextField(btnText);
@@ -42,12 +42,12 @@ public class Controlador {
 
     public void enableButton(Button btn) {
         btn.setDisable(false);
-
     }
 
     public void disableButton(Button b) {
         b.setDisable(true);
     }
+
     public boolean presionoResolver(String btnText) {
         return btnText.equals("=");
     }
@@ -63,8 +63,9 @@ public class Controlador {
     public boolean isOperador(String valor) {
         return "+-/.x".contains(valor);
     }
+
     public String getLastPos(String valor) {
-        return String.valueOf(valor.charAt(valor.length()-1));
+        return String.valueOf(valor.charAt(valor.length() - 1));
     }
 
     public int ocurrenciasDe(String exp, String c) {
@@ -79,10 +80,9 @@ public class Controlador {
     }
 
 
-
     public void insertToTextField(String input) {
         if (isOperador(input) && isOperador(getLastPos(textField.getText()))) {
-            textField.setText(textField.getText().substring(0, textField.getText().length()-1).concat(input));
+            textField.setText(textField.getText().substring(0, textField.getText().length() - 1).concat(input));
             return;
         }
 
@@ -94,8 +94,6 @@ public class Controlador {
         } else if (input.equals("(") && ocurrenciasDe(textField.getText(), "(") > ocurrenciasDe(textField.getText(), ")")) {
             enableButton(cierraParentesisBtn);
         }
-
-
     }
 
 
@@ -110,7 +108,7 @@ public class Controlador {
         String m;
         try {
             String resultado = modelo.calcular(expresion);
-            String decimalPart = resultado.substring(resultado.indexOf(".")+1);
+            String decimalPart = resultado.substring(resultado.indexOf(".") + 1);
             if (isEntero(decimalPart)) {
                 textField.setText(getParteEntera(resultado));
             } else {
@@ -120,7 +118,7 @@ public class Controlador {
         } catch (ArithmeticException e) {
             m = "No se puede dividir entre 0, es infinito.";
         } catch (Exception e) {
-            m = "Esta expresion no tiene sentido.";
+            m = "Esta expresion no tiene sentido.\nRevisa el numero de operandos.";
         }
         instanceVentanaError(m);
     }
@@ -130,8 +128,9 @@ public class Controlador {
     }
 
     public boolean endsWith(String expression) {
-        return "(/-+x.".indexOf(expression.charAt(expression.length()-1)) != -1;
+        return "(/-+x.".indexOf(expression.charAt(expression.length() - 1)) != -1;
     }
+
     public String fillWithParentesis(String expresion) {
         if (endsWith(expresion)) {
             //expresion = expresion.substring(0, expresion.length() - 1);
@@ -143,6 +142,7 @@ public class Controlador {
         }
         return expresion;
     }
+
     public void instanceVentanaError(String mensaje) {
         Alert alerta = new Alert(Alert.AlertType.ERROR);
         alerta.setTitle("");
@@ -151,12 +151,12 @@ public class Controlador {
         alerta.showAndWait();
     }
 
-    public void vaciar(){
+    public void vaciar() {
         textField.setText("");
     }
 
     public void borrarUltimo() {
-        textField.setText(textField.getText().substring(0, textField.getText().length()-1));
+        textField.setText(textField.getText().substring(0, textField.getText().length() - 1));
     }
 
     public boolean isEntero(String decPart) {
