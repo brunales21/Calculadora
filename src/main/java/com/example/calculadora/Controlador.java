@@ -98,6 +98,7 @@ public class Controlador {
 
     }
 
+
     public String fixExpression(String expresion) {
         if (getCantParentesisRestantes(expresion) != 0) {
             expresion = fillWithParentesis(expresion);
@@ -109,9 +110,7 @@ public class Controlador {
         String m;
         try {
             String resultado = modelo.calcular(expresion);
-            System.out.println(resultado);
             String decimalPart = resultado.substring(resultado.indexOf(".")+1);
-            System.out.println(decimalPart);
             if (isEntero(decimalPart)) {
                 textField.setText(getParteEntera(resultado));
             } else {
@@ -120,6 +119,8 @@ public class Controlador {
             return;
         } catch (ArithmeticException e) {
             m = "No se puede dividir entre 0, es infinito.";
+        } catch (Exception e) {
+            m = "Esta expresion no tiene sentido.";
         }
         instanceVentanaError(m);
     }
@@ -132,18 +133,14 @@ public class Controlador {
         return "(/-+x.".indexOf(expression.charAt(expression.length()-1)) != -1;
     }
     public String fillWithParentesis(String expresion) {
-
         if (endsWith(expresion)) {
             //expresion = expresion.substring(0, expresion.length() - 1);
-            System.out.println("klkk");
             expresion = expresion.concat("0");
         }
-
-
-        for (int i = 0; i < getCantParentesisRestantes(expresion)+1; i++) {
+        int cant = getCantParentesisRestantes(expresion);
+        for (int i = 0; i < cant; i++) {
             expresion = expresion.concat(")");
         }
-        System.out.println(expresion);
         return expresion;
     }
     public void instanceVentanaError(String mensaje) {
@@ -160,7 +157,6 @@ public class Controlador {
 
     public void borrarUltimo() {
         textField.setText(textField.getText().substring(0, textField.getText().length()-1));
-
     }
 
     public boolean isEntero(String decPart) {
