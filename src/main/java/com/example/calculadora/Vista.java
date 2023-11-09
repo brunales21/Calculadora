@@ -17,7 +17,7 @@ public class Vista extends Application {
     @Override
     public void start(Stage stage) {
         FXMLLoader fxmlLoader = new FXMLLoader(Vista.class.getResource("Calculadora.fxml"));
-        Image icon = new Image(getClass().getResourceAsStream("/imgs/miniatura.png"));
+        //Image icon = new Image(getClass().getResourceAsStream("/imgs/miniatura.png"));
 
         Scene scene = null;
         try {

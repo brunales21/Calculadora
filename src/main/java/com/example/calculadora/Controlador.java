@@ -81,7 +81,7 @@ public class Controlador {
 
 
     public void insertToTextField(String input) {
-        if (isOperador(input) && isOperador(getLastPos(textField.getText()))) {
+        if (!textField.getText().isEmpty() && isOperador(input) && isOperador(getLastPos(textField.getText()))) {
             textField.setText(textField.getText().substring(0, textField.getText().length() - 1).concat(input));
             return;
         }
@@ -133,7 +133,6 @@ public class Controlador {
 
     public String fillWithParentesis(String expresion) {
         if (endsWith(expresion)) {
-            //expresion = expresion.substring(0, expresion.length() - 1);
             expresion = expresion.concat("0");
         }
         int cant = getCantParentesisRestantes(expresion);
